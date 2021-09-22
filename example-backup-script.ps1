@@ -1,4 +1,6 @@
-﻿$devicename="device_name"
+﻿Import-Module .\Get-PhoneData.psm1
+
+$devicename="device_name"
 $storagedir='c:\Where\to\store\files'
 $getall='(.*)$'
 
@@ -21,5 +23,5 @@ $Thingstobackup.Add($something_to_backup_2) | Out-Null
 
 
 $Thingstobackup | ForEach-Object {
-    c:\script-location\Get-PhoneData.ps1 -phoneName $devicename -sourceFolder $_.source -targetFolder $_.destination -filter $_.filter
+    Get-DeviceData -DeviceName $devicename -Source $_.source -Target $_.destination -Mode "Copy" -Filter $_.filter
 }
